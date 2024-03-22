@@ -8,9 +8,11 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI scoreTotal;    // referencia al texto del score
+    [SerializeField] private TextMeshProUGUI bodysTotal;    // referencia al texto del bodys
 
     private static GameManager instance;                    // referencia Singleton al GameManager
     private int score = 0;                                  // referencia a la variable Score (puntos acumulados)
+    private int bodys = 2;                                  // referencia a la variable bodys (bodys acumulados)
 
     private void Awake()
     {
@@ -29,20 +31,27 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         scoreTotal.text = Score().ToString();
+        bodysTotal.text = bodys.ToString();
+
     }
 
-    // Retorna el score acumulado
+    // Retorna el score acumulado y bodys acumulado
     public int Score()
     {
         return score;
     }
 
-    // Adiciona los puntos logrados al Score
+    // Retorna el score acumulado y bodys acumulado
+    public void Bodys(int body)
+    {
+        bodys = body;
+    }
+
+    // Adiciona los puntos logrados al Score y los bodys alcanzados
     public void AddScore(int points)
     {
         score += points;
         // AudioManager
-
     }
 
 
@@ -50,6 +59,7 @@ public class GameManager : MonoBehaviour
     public void ResetScore()
     {
         score = 0;
+        bodys = 2;
     }
 
 }

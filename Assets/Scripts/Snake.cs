@@ -156,13 +156,13 @@ public class Snake : MonoBehaviour
     // Gestiona el crecimiento de la snake
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Si la snake colisiona con la fruit => la snake crece llamando a la función Grow() e incrementa los puntos en 1
+        // Si la snake colisiona con la fruit => la snake crece llamando a la función Grow() e incrementa los puntos en 1 y 
         // Sino => resetea la posición de la snake, y decrementa los puntos en 1.
         if (other.tag == "Fruit")
         {
+            Grow(); 
             gameManager.AddScore(1);
-            
-            Grow();
+            gameManager.Bodys(bodysList.Count - 1);
 
         }else if (other.tag == "Obstacle")
         {
